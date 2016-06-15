@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+APP="alexa-test" # name of your release
+
+BUILD_HOST="util.polymetric.xyz" # host where to build the release
+BUILD_USER="root" # local user at build host
+BUILD_AT="/tmp/erlang/alexa-test/builds" # build directory on build host
+
+STAGING_HOSTS="util.polymetric.xyz" # staging / test hosts separated by space
+STAGING_USER="root" # local user at staging hosts
+TEST_AT="/test/alexa-test" # deploy directory on staging hosts. default is DELIVER_TO
+
+PRODUCTION_HOSTS="util.polymetric.xyz" # deploy / production hosts separated by space
+PRODUCTION_USER="root" # local user at deploy hosts
+DELIVER_TO="/opt/alexa-test" # deploy directory on production hosts
