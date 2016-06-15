@@ -1,12 +1,30 @@
 defmodule AlexaTest do
-  use Alexa.Skill, app_id: "amzn1.echo-sdk-ams.app.430c8f65-e955-4b8e-aba9-4ef5fb1c57ff"      
+  use Application
 
-  def handle_intent("AliceDeploy", request, response) do
-    response |> say("Hello World!")
+  # See http://elixir-lang.org/docs/stable/elixir/Application.html
+  # for more information on OTP Applications
+  def start(_type, _args) do
+    import Supervisor.Spec, warn: false
+
+    children = [
+      # Start the endpoint when the application starts
+      supervisor(AlexaTest.Endpoint, []),
+      # Start the Ecto repository
+      supervisor(AlexaTest.Repo, []),
+      # Here you could define other workers and supervisors as children
+      # worker(AlexaTest.Worker, [arg1, arg2, arg3]),
+    ]
+
+    # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
+    # for other strategies and supported options
+    opts = [strategy: :one_for_one, name: AlexaTest.Supervisor]
+    Supervisor.start_link(children, opts)
   end
 
-  def handle_intent("HelloWorld", request, response) do
-    response |> say("Hello World!")
+  # Tell Phoenix to update the endpoint configuration
+  # whenever the application is updated.
+  def config_change(changed, _new, removed) do
+    AlexaTest.Endpoint.config_change(changed, removed)
+    :ok
   end
-
 end
