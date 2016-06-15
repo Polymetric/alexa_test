@@ -12,7 +12,6 @@ defmodule AlexaTest.Web do
 
   post "/alexa" do
     {:ok, body, conn} = read_body(conn)
-    IO.puts body
     request = Poison.decode!(body, as: %Alexa.Request{})
     response = Alexa.handle_request(request)
     conn
