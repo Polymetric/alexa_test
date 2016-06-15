@@ -19,6 +19,7 @@ defmodule AlexaTest.AlexaController do
   end
 
   def intentRequest("AliceDeploy", params) do
+    IO.puts params[0]
     response()
       |> set_output_speech("Deploying!")
       |> set_should_end_session(true)
