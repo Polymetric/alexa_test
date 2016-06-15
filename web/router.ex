@@ -13,10 +13,10 @@ defmodule AlexaTest.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", AlexaTest do
-    pipe_through :browser # Use the default browser stack
+  scope "/alexa", AlexaTest do
+    pipe_through :api
 
-    get "/", PageController, :index
+    post "/alexa", AlexaController, :post
   end
 
   # Other scopes may use custom stacks.
