@@ -22,4 +22,6 @@ defmodule AlexaTest.AlexaController do
     response
       |> set_output_speech("Deploying!")
       |> set_should_end_session(true)
+  end
+
 end
