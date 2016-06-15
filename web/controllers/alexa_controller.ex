@@ -3,17 +3,23 @@ defmodule AlexaTest.AlexaController do
   use Alexa.Speech, :post
 
   def launchRequest(_params) do
-    response() 
-      |> set_output_speech("Welcome to the programming oracle. Ask me what are the best programming languages.") 
+    response
+      |> set_output_speech("I am Alice, the wonderful bot. To deploy, try something like. Alexa, ask Alice to deploy call center to dev seven.") 
   end
 
   def sessionEndedRequest(_params) do
-    response() 
+    response
   end
 
   def intentRequest("HelloWorld", params) do    
-    response()
-      |> set_output_speech("Watashi wa Alexa dess!")
+    response
+      |> set_output_speech("Watashi wa Alice dess!")
       |> set_should_end_session(true)
   end
+
+  def intentRequest("AliceDeploy", params) do
+    IO.puts params
+    response
+      |> set_output_speech("Deploying!")
+      |> set_should_end_session(true)
 end
