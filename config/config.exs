@@ -19,8 +19,8 @@ use Mix.Config
 # Or configure a 3rd-party app:
 #
 config :logger,
-  level: :info,
-  compile_time_purge_level: :info
+  level: :debug,
+  compile_time_purge_level: :debug
 #
 
 # It is also possible to import configuration files, relative to this

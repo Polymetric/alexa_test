@@ -5,8 +5,9 @@ defmodule AlexaTest.Api do
     import Supervisor.Spec, warn: false
 
     children = [
-      worker(AlexaTest.Web, [])
+      Plug.Adapters.Cowboy.child_spec(:http, AlexaTest.Web, [], [port: 4000])
     ]
+
 
     opts = [strategy: :one_for_one, name: AlexaTest.Supervisor]
     Supervisor.start_link(children, opts)
