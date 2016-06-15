@@ -10,7 +10,7 @@ defmodule AlexaTest.Web do
     {:ok, _} = Plug.Adapters.Cowboy.http AlexaTest.Web, []
   end
 
-  post "/command" do
+  post "/alexa" do
     {:ok, body, conn} = read_body(conn)
     request = Poison.decode!(body, as: %Alexa.Request{})
     response = Alexa.handle_request(request)
