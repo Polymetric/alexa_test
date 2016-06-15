@@ -16,7 +16,7 @@ defmodule AlexaTest.Router do
   scope "/alexa", AlexaTest do
     pipe_through :api
 
-    post "/alexa", AlexaController, :post
+    post "/", AlexaController, :post
   end
 
   # Other scopes may use custom stacks.
