@@ -12,7 +12,7 @@ defmodule AlexaTest.AlexaController do
       |> set_output_speech("Goodbye.")
   end
 
-  def intentRequest("HelloWorld", params) do    
+  def intentRequest("HelloWorld", _params) do    
     response()
       |> set_output_speech("Watashi wa Alice dess!")
       |> set_should_end_session(true)
@@ -24,6 +24,12 @@ defmodule AlexaTest.AlexaController do
     server_number = params["request"]["intent"]["slots"]["ServerNumber"]["value"]
     response()
       |> set_output_speech("Deploying #{app} to #{server_type} #{server_number}!")
+      |> set_should_end_session(true)
+  end
+
+  def intentRequest("FreeServers", _params) do
+    response()
+      |> set_output_speech(for name <- TestServers.free_server_names, into: "", do: name)
       |> set_should_end_session(true)
   end
 
