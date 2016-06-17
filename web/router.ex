@@ -19,4 +19,10 @@ defmodule AlexaTest.Router do
     post "/", AlexaController, :post
   end
 
+  scope "/bounce", AlexaTest do
+    pipe_through :api
+
+    get "/index", BounceController, :index
+  end
+
 end
