@@ -29,7 +29,7 @@ defmodule AlexaTest.AlexaController do
 
   def intentRequest("FreeServers", _params) do
     response()
-      |> set_output_speech(for name <- TestServers.free_server_names, into: "", do: name)
+      |> set_output_speech(for name <- TestServers.free_server_names, into: "", do: name <> " ")
       |> set_should_end_session(true)
   end
 

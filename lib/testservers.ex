@@ -1,7 +1,7 @@
 defmodule TestServers do
 
   def all_servers do
-    response = HTTPotion.get "testservers.dev.teladoc.com/servers.json", [ ibrowse: [ proxy_host: '96f40979.ngrok.io', proxy_port: 80 ] ]
+    response = HTTPotion.get "testservers.dev.teladoc.com/servers.json"
     servers_json = Poison.decode! response.body
     servers_json["servers"]
   end
