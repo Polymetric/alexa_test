@@ -19,7 +19,7 @@ defmodule AlexaTest.Mixfile do
   def application do
     [mod: {AlexaTest, []},
      applications: [:phoenix, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex, :httpotion]]
+                    :phoenix_ecto, :postgrex, :httpotion, :ex_twiml]]
   end
 
   # Specifies which paths to compile per environment.
@@ -38,7 +38,8 @@ defmodule AlexaTest.Mixfile do
      {:gettext, "~> 0.9"},
      {:cowboy, "~> 1.0"},
      {:alexa, git: "https://github.com/gabiz/alexa"},
-     {:httpotion, "~> 3.0.0"}]
+     {:httpotion, "~> 3.0.0"},
+     {:ex_twiml, "~> 2.1.0"}]
   end
 
   # Aliases are shortcut or tasks specific to the current project.

@@ -33,4 +33,12 @@ defmodule AlexaTest.AlexaController do
       |> set_should_end_session(true)
   end
 
+  def intentRequest("CallTeladoc", _params) do
+    HTTPotion.post "https://api.twilio.com/2010-04-01/#{System.get_env("TWILIO_SID")}/Calls", [basic_auth: {System.get_env("TWILIO_SID"), System.get_env("TWILIO_AUTH")}, body: "To=" <> URI.encode_www_form("+18304310213") <> "&From=" <> URI.encode_www_form("+19723622044") <> "&Url=" <> URI.encode_www_form("https://util.polymetric.xyz/twilio/callback"),
+   headers: ["Content-Type": "application/x-www-form-urlencoded"]] 
+    response()
+      |> set_output_speech("You should get a call shortly that will connect you to Teladoc.")
+      |> set_should_end_session(true)
+  end
+
 end

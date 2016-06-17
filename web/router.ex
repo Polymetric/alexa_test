@@ -25,4 +25,8 @@ defmodule AlexaTest.Router do
     get "/index", BounceController, :index
   end
 
+  scope "/twilio", AlexaTest do
+    post "/callback", TwilioController, :index
+  end
+
 end
