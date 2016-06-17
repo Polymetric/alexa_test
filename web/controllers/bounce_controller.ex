@@ -1,4 +1,4 @@
-defmodule AlexaTest.AlexaController do
+defmodule AlexaTest.BounceController do
   use AlexaTest.Web, :controller
   
   def index(conn, _params) do
